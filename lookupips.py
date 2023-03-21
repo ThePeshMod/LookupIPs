@@ -32,7 +32,7 @@ def main(input_file_name, output_file_name):
 
 def get_data_from_geoplugin(ip):
     try:
-        api_url = "http://www.geoplugin1.net/json.gp?ip="
+        api_url = "http://www.geoplugin.net/json.gp?ip="
         url = api_url + ip[0]
         response = urlopen(url)
         return json.loads(response.read())
