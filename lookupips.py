@@ -18,12 +18,8 @@ def main(input_file_name, output_file_name):
 
     ip_with_add_info = []
 
-    api_url = "http://www.geoplugin.net/json.gp?ip="
     for ip in ip_list:
-        url = api_url + ip[0]
-        response = urlopen(url)
-        json_data = json.loads(response.read())
-
+        json_data = get_data_from_geoplugin(ip[0])
         ip_info_array = [ip[0], json_data['geoplugin_city'], json_data['geoplugin_countryName']]
         ip_with_add_info.append(ip_info_array)
 
@@ -34,6 +30,17 @@ def main(input_file_name, output_file_name):
     write_output_file(output_file_name, ip_with_add_info)
 
 
+def get_data_from_geoplugin(ip):
+    try:
+        api_url = "http://www.geoplugin1.net/json.gp?ip="
+        url = api_url + ip[0]
+        response = urlopen(url)
+        return json.loads(response.read())
+    except:
+        print("Error accessing geoPlugin API")
+        exit(-1)
+
+
 def get_ip_list(filename):
     try:
         file = open(filename, 'r')
@@ -41,7 +48,7 @@ def get_ip_list(filename):
         ip_list = list(reader)
         file.close()
         return ip_list
-    except Exception:
+    except:
         print("File " + filename + " doesn't exist or cannot be parsed")
         exit(-1)
 
