@@ -1,7 +1,7 @@
 """
 This script is licensed under GNU GPL v3.0 license: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-This software uses the https://www.geoplugin.com/ API.
+This script uses the https://www.geoplugin.com/ API.
 Check their page to learn about usage limitations: https://www.geoplugin.com/aup
 """
 
